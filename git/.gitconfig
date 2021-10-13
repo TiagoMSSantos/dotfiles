@@ -1,0 +1,71 @@
+[user]
+  email = <email>
+  name = <user_name>
+  password = <password>
+  signingkey = <signing_key>
+[github]
+  user = <user_name>
+[alias]
+  alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+  current = rev-parse --abbrev-ref HEAD
+  logme = log --author '<author>'
+  tree = log --all --decorate --graph --oneline
+  files = "!git diff-tree --no-commit-id --name-only -r ${1}^"
+  conflicts = diff --name-only --diff-filter=U
+  ls = log --color --graph --pretty=format:'%C(yellow)%d%Creset %Cgreen(%cr)%Creset %C(bold blue)[%an]%Creset %s %Cred(%h)%Creset' --abbrev-commit
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --numstat
+  t = !tig "$@"
+  diffBranch = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+[branch]
+  autosetuprebase = always
+[credential]
+  helper = cache --timeout=3600
+[core]
+  hooksPath = <git-hooks_path>
+  editor = vi
+  excludesfile = <.gitignore>
+[diff]
+  tool = vscode
+[difftool]
+  prompt = false
+[log]
+  date = iso
+[format]
+  pretty = fuller
+[merge]
+  tool = vscode
+[mergetool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[commit]
+  template = <.gitmessage>
+  gpgsign = true
+[pull]
+  rebase = true
+  default = simple
+[fetch]
+  prune = true
+[push]
+  default = simple
+[rebase]
+  autostash = true
+[rerere]
+  enabled = true
+[submodule]
+  fetchJobs = 8
+[advice]
+  detachedHead=true
+[color]
+  ui = true
+[http]
+  postBuffer = 524288000
+  sslVerify = false
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+[remote "origin"]
+  fetch = +refs/merge-requests/*/head:refs/remotes/origin/merge-requests/*
+  fetch = +refs/heads/*:refs/remotes/origin/*
+  fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+
