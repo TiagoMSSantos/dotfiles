@@ -26,6 +26,8 @@
   excludesfile = <.gitignore>
 [diff]
   tool = vscode
+  noprefix = true
+  mnemonicprefix = true
 [difftool]
   prompt = false
 [log]

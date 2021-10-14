@@ -1,0 +1,78 @@
+git clone --recursive https://<url_repo>.git <name>
+
+git config --global user.email "<e-mail>"
+git config --global user.name "<user-name>"
+git config --global credential.helper 'cache --timeout=360000'
+git config --global core.excludesfile .vscode
+git config --get remote.origin.url
+
+git remote add origin https://<url_repo>
+git add -A
+git commit -m "<message>"
+git push
+git push -u origin --all
+git push --force-with-lease
+
+git status --branch --porcelain --long --verbose --ignored
+git status -v
+git diff --histogram --patch-with-stat
+git diff --cached --staged HEAD
+
+git diff --staged
+git pull --rebase
+
+git checkout -b <new_branch> <commitID>
+
+git log --graph --decorate
+
+git checkout master
+git pull origin master
+git merge --ff-only <branch>
+git push origin master
+
+git ls-files --other --ignored --exclude-standard
+
+git symbolic-ref HEAD
+
+git rm --cached -r -f .
+git add -A
+
+git reset --hard HEAD
+git reset --hard <commidId> && git clean --force
+git checkout -f
+
+git commit --amend
+
+git reset --soft HEAD~N
+
+git reflog
+
+git fetch origin
+git reset --hard origin/master
+git clean -f
+git checkout master
+
+git clean -f -f -d -x
+
+rm .git/refs/stash .git/logs/refs/stash
+
+git checkout <commidId>
+
+git push --force-with-lease
+
+git reset --hard <commitId>
+git push --force-with-lease
+
+git checkout <commitId> ../
+
+git branch | grep -v "master" | xargs git branch -D
+
+git remote prune origin
+
+git rebase -i <branch>
+git rebase --continue
+git rebase --abort
+
+git cherry-pick <commitId>
+
+git show HEAD~1
